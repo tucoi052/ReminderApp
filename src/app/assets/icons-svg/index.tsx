@@ -8,6 +8,7 @@ import CalenderSchedule from './calendar-schedule.svg';
 import CalenderCheck from './calendar-check.svg';
 import CalenderFill from './calendar-fill.svg';
 import AddCricle from './plus-circle-fill.svg';
+import MenuButton from './menu-button-wide.svg';
 
 interface ISizeProps {
   size?: number;
@@ -26,3 +27,4 @@ export const CalenderFillIcon = (props: SvgProps) => (
   <CalenderFill {...props} />
 );
 export const AddCricleIcon = (props: SvgProps) => <AddCricle {...props} />;
+export const MenuButtonIcon = (props: SvgProps) => <MenuButton {...props} />;

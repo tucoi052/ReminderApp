@@ -6,6 +6,7 @@ import { useTheme } from '@theme';
 import { DividerProps } from './type';
 
 export const Divider = ({
+  width = '100%',
   height = 1,
   colorTheme,
   color = '#bbb',
@@ -18,9 +19,9 @@ export const Divider = ({
     () => ({
       backgroundColor: colorTheme ? theme.colors[colorTheme] : color,
       height,
-      width: '100%',
+      width,
     }),
-    [color, colorTheme, height, theme.colors],
+    [color, colorTheme, height, width, theme.colors],
   );
 
   // render

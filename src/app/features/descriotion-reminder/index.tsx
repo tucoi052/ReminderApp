@@ -13,6 +13,7 @@ import notifee from '@notifee/react-native';
 import { useStyle } from './style';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { goBack } from '@navigation/navigation-service';
+import { BackIcon } from '@assets/icons-svg';
 const DescriptionReminderComponent = () => {
   const [title, setTitle] = React.useState<string>();
   const [content, setContent] = React.useState<string>();
@@ -63,18 +64,14 @@ const DescriptionReminderComponent = () => {
 
   return (
     <Block block>
-      <Screen statusBarStyle="dark-content">
+      <Screen statusBarStyle="dark-content" dismissKeyboardView>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           keyboardVerticalOffset={70}
           style={{ flex: 1 }}>
           <Block middle direction="row" ml={10}>
-            <Button onPress={goBack}>
-              {/* <VectorIcon
-                size={30}
-                color="black"
-                icon={ICONS.arrow_chevron_back}
-              /> */}
+            <Button pt={5} onPress={goBack}>
+              <BackIcon width={30} height={25} color="black" />
             </Button>
             <Text style={styles.title}>Thêm nội dung nhắc nhở</Text>
           </Block>

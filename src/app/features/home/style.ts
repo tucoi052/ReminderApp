@@ -12,19 +12,16 @@ export const useStyle = () => {
   return useMemo(
     () =>
       StyleSheet.create({
-        text: {
+        titleNote: {
           color: theme.colors.text,
+          fontSize: sizeScale(18),
+          fontWeight: '700',
+          marginLeft: sizeScale(5),
+          marginVertical: sizeScale(10),
         },
-        centerList: {
-          alignSelf: 'center',
-        },
-        mt20: {
-          marginTop: sizeScale(20),
-        },
-        addIcon: {
-          position: 'absolute',
-          bottom: 10,
-          right: 10,
+        containerFl: {
+          backgroundColor: '#fff',
+          borderRadius: 10,
         },
       }),
     [theme.colors.text],

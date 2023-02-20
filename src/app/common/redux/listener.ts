@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { appActions } from '@redux-slice';
-import { createListenerMiddleware } from '@reduxjs/toolkit';
+import {
+  createListenerMiddleware,
+  TypedStartListening,
+} from '@reduxjs/toolkit';
+import { RootState } from '@store/all-reducers';
+import { store } from '@store/store';
 
 export const listenerMiddleware = createListenerMiddleware();
 const startAppListening = listenerMiddleware.startListening;
-type StartAppListening = typeof startAppListening;
+type StartAppListening = TypedStartListening<RootState, typeof store.dispatch>;
 
 export const takeLatestListeners =
   (withLoading?: boolean): StartAppListening =>

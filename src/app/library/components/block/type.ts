@@ -199,7 +199,7 @@ export interface BlockProps extends ViewProps {
    * Actual width
    * @default undefined
    */
-  width?: StyleStringOrNumber;
+  w?: StyleStringOrNumber;
 
   /**
    * Actual max width
@@ -217,7 +217,7 @@ export interface BlockProps extends ViewProps {
    * Actual height
    * @default undefined
    */
-  height?: StyleStringOrNumber;
+  h?: StyleStringOrNumber;
 
   /**
    * Actual max width

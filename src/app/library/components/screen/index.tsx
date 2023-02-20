@@ -1,6 +1,9 @@
 import React, { useMemo } from 'react';
 import {
+  Keyboard,
   StatusBar,
+  TouchableWithoutFeedback,
+  TouchableWithoutFeedbackProps,
   useWindowDimensions,
   View,
   ViewProps,
@@ -143,6 +146,7 @@ function ScreenWithoutScrolling(
     style = {},
     rightInsetColor = colors.background,
     leftInsetColor = colors.background,
+    dismissKeyboardView = false,
   } = props;
 
   // render
@@ -155,7 +159,15 @@ function ScreenWithoutScrolling(
           style,
           backgroundColor ? { backgroundColor } : {},
         ]}>
-        <View style={[styles.flex]} children={children} />
+        {props.dismissKeyboardView ? (
+          <TouchableWithoutFeedback
+            onPress={Keyboard.dismiss}
+            accessible={false}>
+            <View style={[styles.flex]} children={children} />
+          </TouchableWithoutFeedback>
+        ) : (
+          <View style={[styles.flex]} children={children} />
+        )}
       </Wrapper>
       <InsetComponent
         edges={edges}

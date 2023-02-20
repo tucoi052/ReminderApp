@@ -9,6 +9,7 @@ import { selectAppToken } from '@redux-selector/app';
 import { DateReminder } from '@features/date-time-reminder';
 import { DescriptionReminder } from '@features/descriotion-reminder';
 import { Home } from '@features/home';
+import { AddTitleNote } from '@features/add-title-note';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -45,6 +46,10 @@ export const RootNavigation = () => {
         <RootStack.Screen
           name={APP_SCREEN.DESCRIPTION_REMINDER}
           component={DescriptionReminder}
+        />
+        <RootStack.Screen
+          name={APP_SCREEN.ADD_TITLE_NOTE}
+          component={AddTitleNote}
         />
       </RootStack.Group>
       {/* )} */}

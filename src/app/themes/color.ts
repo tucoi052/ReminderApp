@@ -9,6 +9,7 @@ export const ColorDefault = {
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
   txtSecound: '#fff',
+  colorPrimary: '#8E97FD',
 };
 export const ColorDark = {
   primary: 'rgb(10, 132, 255)',
@@ -21,4 +22,5 @@ export const ColorDark = {
   error: 'rgb(255, 59, 48)',
   info: '#ffd700',
   txtSecound: '#000',
+  colorPrimary: '#8E97FD',
 };

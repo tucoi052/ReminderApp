@@ -39,6 +39,9 @@ export const useStyle = () => {
           fontWeight: '600',
           marginVertical: sizeScale(12),
         },
+        boxTime: {
+          backgroundColor: theme.colors.background,
+        },
       }),
     [theme.colors.text],
   );

@@ -15,18 +15,20 @@ import { DatePick } from './components';
 import { goBack, navigate } from '@navigation/navigation-service';
 import { APP_SCREEN } from '@navigation/screen-types';
 import { BackIcon } from '@assets/icons-svg';
+import { useTheme } from '@react-navigation/native';
 const DateReminderComponent = () => {
   const [date, setDate] = React.useState(new Date());
   const dataDateRef = React.useRef<{ data: TimePickDataI[] }>();
   const styles = useStyle();
+  const theme = useTheme();
 
   const onNext = () => {
     navigate(APP_SCREEN.DESCRIPTION_REMINDER);
   };
 
   return (
-    <Block block color="#fff">
-      <Screen statusBarStyle="dark-content" bottomInsetColor="#fff">
+    <Block block>
+      <Screen statusBarStyle="dark-content" dismissKeyboardView>
         <Block direction="row" ml={10}>
           <Button pt={5} onPress={goBack}>
             <BackIcon width={30} height={25} color="black" />
@@ -45,6 +47,9 @@ const DateReminderComponent = () => {
             date={date}
             onDateChange={setDate}
             locale="vi"
+            theme="light"
+            fadeToColor={theme.colors.background}
+            style={styles.boxTime}
           />
         </Block>
         <Text style={styles.txtTime}>
@@ -57,9 +62,9 @@ const DateReminderComponent = () => {
           </Text>
         </TouchableScale>
         <Spacer height={20} />
-        {/* <Block block /> */}
         <DatePick ref={dataDateRef} />
-        {/* <Button
+        <Block block />
+        <Button
           middle
           color="#8E97FD"
           p={5}
@@ -69,7 +74,7 @@ const DateReminderComponent = () => {
           borderRadius={16}
           onPress={onNext}>
           <Text style={styles.txtNext}>Tiếp theo</Text>
-        </Button> */}
+        </Button>
       </Screen>
     </Block>
   );

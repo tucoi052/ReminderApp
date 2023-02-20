@@ -34,6 +34,7 @@ export const InputFlat = forwardRef<any, InputFlatProps>((props, ref) => {
     rxRemove,
     nameTrigger,
     placeholder,
+    placeholderTextInput,
     defaultValue,
     placeholderT18n,
     error = undefined,
@@ -215,6 +216,7 @@ export const InputFlat = forwardRef<any, InputFlatProps>((props, ref) => {
             editable={!disabled}
             style={[styles.input, inputStyleOverwrite]}
             ref={ref}
+            placeholder={placeholderTextInput}
             onSubmitEditing={onSubmit}
             {...rest}
             onChangeText={_onChangeText}

@@ -33,6 +33,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     labelTx,
     rxRemove,
     placeholder,
+    placeholderTextInput,
     nameTrigger,
     defaultValue,
     rightChildren,
@@ -76,7 +77,9 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
     progress,
     [0, 1],
     [
-      isTopLabelMutiline ? heightContainerInput - 10 : 0,
+      isTopLabelMutiline
+        ? heightContainerInput - 10
+        : heightContainerInput / 2 - 7,
       isTopLabelMutiline ? heightContainerInput - 2 : heightContainerInput,
     ],
   );
@@ -214,6 +217,7 @@ export const InputOutline = forwardRef<any, InputOutlineProps>((props, ref) => {
             selectionColor={activeTintBorderColor}
             style={[styles.input, inputStyleOverwrite]}
             ref={ref}
+            placeholder={placeholderTextInput}
             onSubmitEditing={onSubmit}
             {...rest}
             onChangeText={_onChangeText}

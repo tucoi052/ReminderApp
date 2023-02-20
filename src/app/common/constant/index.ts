@@ -1,5 +1,6 @@
 export const STORAGE_KEY_TOKEN = 'TOKEN';
 export const STORAGE_KEY_APP_THEME = 'APP_THEME';
+export const STORAGE_KEY_CHECK_LIST = 'STORAGE_KEY_CHECK_LIST';
 export const KANA_FULL_HALF_MAP = {
   ガ: 'ｶﾞ',
   ギ: 'ｷﾞ',

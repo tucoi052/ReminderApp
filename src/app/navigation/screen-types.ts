@@ -8,6 +8,7 @@ export enum APP_SCREEN {
   HOME = 'HOME',
   DATE_REMINDER = 'DATE_REMINDER',
   DESCRIPTION_REMINDER = 'DESCRIPTION_REMINDER',
+  ADD_TITLE_NOTE = 'ADD_TITLE_NOTE',
 }
 
 export type UnAuthorizeParamsList = {
@@ -19,6 +20,7 @@ export type AuthorizeParamsList = {
   [APP_SCREEN.HOME]: undefined;
   [APP_SCREEN.DATE_REMINDER]: undefined;
   [APP_SCREEN.DESCRIPTION_REMINDER]: undefined;
+  [APP_SCREEN.ADD_TITLE_NOTE]: undefined;
 };
 export type RootStackParamList = {
   [APP_SCREEN.UN_AUTHORIZE]: undefined;

@@ -21,7 +21,7 @@ export const DatePick = React.forwardRef(({}, ref) => {
     }),
     [timePick],
   );
-  const _onPick = useCallback(id => {
+  const _onPick = useCallback((id: number) => {
     setTimePick(_timePick => {
       const _newTimePick = _timePick.map(e => {
         if (e.id === id) e.pick = !e.pick;

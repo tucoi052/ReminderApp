@@ -12,22 +12,17 @@ export const useStyle = () => {
   return useMemo(
     () =>
       StyleSheet.create({
-        number: {
-          color: theme.colors.text,
-          fontSize: sizeScale(23),
-          fontWeight: '700',
-        },
         title: {
           color: theme.colors.text,
           fontSize: sizeScale(16),
           fontWeight: '500',
+          marginLeft: sizeScale(10),
         },
-        numberCalender: {
-          position: 'absolute',
-          fontSize: sizeScale(10),
-          top: sizeScale(7),
-          left: sizeScale(6),
-          color: theme.colors.colorPrimary,
+        number: {
+          color: theme.colors.text,
+          textAlign: 'right',
+          fontSize: sizeScale(14),
+          flex: 1,
         },
       }),
     [theme.colors.text],

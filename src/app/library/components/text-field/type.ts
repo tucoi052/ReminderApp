@@ -128,6 +128,12 @@ export interface InputBaseProps extends TextInputProps {
   placeholder?: string;
 
   /**
+   * Placeholder of text input
+   * @default undefined
+   */
+  placeholderTextInput?: string;
+
+  /**
    * Placeholder color
    * @default undefined
    */

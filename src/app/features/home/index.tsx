@@ -1,12 +1,22 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import isEqual from 'react-fast-compare';
-import { Block, Button, Screen } from '@components';
+import { Block, Button, Divider, Screen, Text } from '@components';
 import { useStyle } from './style';
-import { FlatList, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+  FlatList,
+  ListRenderItem,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { ItemReminder } from './components';
-import { randomUniqueId } from '@common';
+import { dispatch, randomUniqueId } from '@common';
 import { TypeItemReminderE } from './components/item-reminder/type';
-import { AddCricleIcon } from '@assets/icons-svg';
+import { ItemNote } from './components/item-note';
+import { useTheme } from '@theme';
+import { MenuButton } from './components/menu-button';
+import { useIsFocused } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import { selectChecklist } from '@redux-selector/checklist';
+import { checklistActions } from '@redux-slice';
 
 const data = [
   {
@@ -31,21 +41,69 @@ const data = [
   },
 ];
 
+const renderSeparator = memo(() => (
+  <Block pl={45}>
+    <Divider />
+  </Block>
+));
+
 const HomeComponent = () => {
   const styles = useStyle();
+  const theme = useTheme();
+  const menuRef = React.useRef<{ onClose: Function }>();
+  const isFocused = useIsFocused();
+  const list = useSelector(selectChecklist);
+
+  useEffect(() => {
+    dispatch(checklistActions.getChecklist());
+  }, []);
+
+  useEffect(() => {
+    if (list) console.log(list);
+  }, [list]);
+
+  const _renderItem: ListRenderItem<{ id: string; title: string }> =
+    React.useCallback(({ item }) => <ItemNote {...item} />, []);
+
+  useEffect(() => {
+    if (!isFocused && menuRef.current?.onClose) {
+      menuRef.current?.onClose();
+    }
+  }, [isFocused]);
+
   return (
-    <Screen statusBarStyle="dark-content">
+    <TouchableWithoutFeedback onPress={() => menuRef.current?.onClose()}>
       <Block block>
-        <Block mt={20} direction="row" flexWrap="wrap" justifyContent="center">
-          {data.map(item => (
-            <ItemReminder {...item} />
-          ))}
-        </Block>
-        <Button p={15} style={styles.addIcon}>
-          <AddCricleIcon width={40} height={40} />
-        </Button>
+        <Screen scroll statusBarStyle="dark-content">
+          <Block
+            mt={20}
+            direction="row"
+            flexWrap="wrap"
+            justifyContent="center">
+            {data.map(item => (
+              <ItemReminder key={item.id} {...item} />
+            ))}
+          </Block>
+          <Block ph={20}>
+            <Block direction="row" middle justifyContent="space-between">
+              <Text style={styles.titleNote}>Danh sách lời nhắc</Text>
+              <Button>
+                <Text color={theme.colors.colorPrimary}>Chỉnh sửa</Text>
+              </Button>
+            </Block>
+            <FlatList
+              scrollEnabled={false}
+              data={list}
+              centerContent
+              style={styles.containerFl}
+              ItemSeparatorComponent={renderSeparator}
+              renderItem={_renderItem}
+            />
+          </Block>
+        </Screen>
+        <MenuButton ref={menuRef} />
       </Block>
-    </Screen>
+    </TouchableWithoutFeedback>
   );
 };
 export const Home = memo(HomeComponent, isEqual);

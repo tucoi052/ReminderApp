@@ -76,6 +76,12 @@ export type ScreenProps = {
   scroll?: boolean;
 
   /**
+   * Using dismisskeyboard content
+   * @default false
+   */
+  dismissKeyboardView?: boolean;
+
+  /**
    * Inset for safe area view
    * @default undefined
    */

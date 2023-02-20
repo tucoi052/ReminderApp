@@ -22,26 +22,47 @@ export const ItemReminder = ({ title, type }: ItemReminderI) => {
       case TypeItemReminderE.TODAY:
         return (
           <Block>
-            <CalenderTodayIcon width={25} height={20} />
+            <CalenderTodayIcon
+              color={theme.colors.colorPrimary}
+              width={25}
+              height={24}
+            />
             <Text style={styles.numberCalender}>{new Date().getDate()}</Text>
           </Block>
         );
       case TypeItemReminderE.SCHEDULE:
-        return <CalenderScheduleIcon width={25} height={20} />;
+        return (
+          <CalenderScheduleIcon
+            color={theme.colors.colorPrimary}
+            width={25}
+            height={24}
+          />
+        );
       case TypeItemReminderE.ALL:
-        return <CalenderFillIcon width={25} height={20} />;
+        return (
+          <CalenderFillIcon
+            color={theme.colors.colorPrimary}
+            width={30}
+            height={24}
+          />
+        );
       case TypeItemReminderE.FINISHED:
-        return <CalenderCheckIcon width={25} height={20} />;
+        return (
+          <CalenderCheckIcon
+            color={theme.colors.colorPrimary}
+            width={25}
+            height={24}
+          />
+        );
     }
   }, []);
 
   return (
     <Button
-      width={sizeScale(160)}
+      width={sizeScale(150)}
       borderRadius={10}
       height={sizeScale(80)}
       color={theme.colors.card}
-      shadow
       m={7}
       p={10}
       onPress={() => navigate(APP_SCREEN.DATE_REMINDER)}>

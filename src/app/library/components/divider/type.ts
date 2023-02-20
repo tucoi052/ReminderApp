@@ -17,4 +17,10 @@ export interface DividerProps {
    * @default 1
    */
   height?: number;
+
+  /**
+   * Height of divider
+   * @default 100%
+   */
+  width?: number | string;
 }
